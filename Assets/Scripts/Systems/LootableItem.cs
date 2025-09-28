@@ -243,12 +243,14 @@ namespace TheLastBreath.Systems
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, 1f);
             
+            #if UNITY_EDITOR
             // Draw item info
             if (Application.isPlaying)
             {
                 Vector3 labelPosition = transform.position + Vector3.up * 1.5f;
                 UnityEditor.Handles.Label(labelPosition, $"{itemName} (x{quantity})");
             }
+            #endif
         }
     }
 }

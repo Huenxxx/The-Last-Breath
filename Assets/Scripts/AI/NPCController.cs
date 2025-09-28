@@ -443,12 +443,14 @@ namespace TheLastBreath.AI
                 Gizmos.DrawLine(transform.position, currentDestination);
             }
             
+            #if UNITY_EDITOR
             // Draw state info
             if (Application.isPlaying)
             {
                 Vector3 labelPosition = transform.position + Vector3.up * 2f;
                 UnityEditor.Handles.Label(labelPosition, $"State: {currentState}");
             }
+            #endif
         }
     }
 }

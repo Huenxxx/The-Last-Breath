@@ -497,7 +497,7 @@ namespace TheLastBreath.Core
             GUILayout.BeginArea(new Rect(10, 10, 300, 200));
             GUILayout.BeginVertical("box");
             
-            GUILayout.Label("The Last Breath - Prototype 0", EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector).label);
+            GUILayout.Label("The Last Breath - Prototype 0", GUI.skin.label);
             GUILayout.Label($"FPS: {Mathf.Round(1f / Time.deltaTime)}");
             GUILayout.Label($"Game Time: {Time.time:F1}s");
             
