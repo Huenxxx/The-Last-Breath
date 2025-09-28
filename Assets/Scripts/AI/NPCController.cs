@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using TheLastBreath.Characters;
+using CharacterController = TheLastBreath.Characters.CharacterController;
 
 namespace TheLastBreath.AI
 {

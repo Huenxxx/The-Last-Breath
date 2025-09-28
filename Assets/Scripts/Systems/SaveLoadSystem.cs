@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using TheLastBreath.Characters;
+using CharacterController = TheLastBreath.Characters.CharacterController;
 
 namespace TheLastBreath.Systems
 {

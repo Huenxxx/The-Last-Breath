@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using TheLastBreath.Systems;
 using TheLastBreath.Characters;
 using TheLastBreath.AI;
+using CharacterController = TheLastBreath.Characters.CharacterController;
 
 namespace TheLastBreath.Core
 {
