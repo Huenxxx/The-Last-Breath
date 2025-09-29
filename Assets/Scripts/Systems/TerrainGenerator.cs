@@ -23,8 +23,29 @@ namespace TheLastBreath.Systems
         [Header("Materials")]
         [SerializeField] private Material terrainMaterial;
         
+        // Seed for random generation
+        [Header("Generation Settings")]
+        [SerializeField] private int seed = 0;
+        
         private Terrain terrain;
         private TerrainData terrainData;
+        
+        // Public properties for SaveLoadSystem
+        public int Seed => seed;
+        public Vector2 TerrainSize => new Vector2(terrainWidth, terrainHeight);
+        
+        // Public methods for SaveLoadSystem
+        public void SetSeed(int newSeed)
+        {
+            seed = newSeed;
+            Random.InitState(seed);
+        }
+        
+        public void SetTerrainSize(Vector2 size)
+        {
+            terrainWidth = (int)size.x;
+            terrainHeight = (int)size.y;
+        }
         
         /// <summary>
         /// Initialize and generate the terrain on start

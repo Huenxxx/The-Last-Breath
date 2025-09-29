@@ -346,12 +346,54 @@ namespace TheLastBreath.Characters
         }
         
         /// <summary>
-        /// Set character as player controlled
+        /// Set player controlled state
         /// </summary>
         /// <param name="playerControlled">Player control state</param>
         public void SetPlayerControlled(bool playerControlled)
         {
             isPlayerControlled = playerControlled;
+        }
+        
+        /// <summary>
+        /// Set moving state for NPCController
+        /// </summary>
+        /// <param name="moving">Moving state</param>
+        public void SetMoving(bool moving)
+        {
+            isMoving = moving;
+            if (hasAnimator)
+            {
+                animator.SetBool(isMovingHash, moving);
+            }
+        }
+        
+        /// <summary>
+        /// Set running state for NPCController
+        /// </summary>
+        /// <param name="running">Running state</param>
+        public void SetRunning(bool running)
+        {
+            if (navAgent != null)
+            {
+                navAgent.speed = running ? runSpeed : walkSpeed;
+            }
+            
+            if (hasAnimator)
+            {
+                animator.SetFloat(speedHash, running ? runSpeed : walkSpeed);
+            }
+        }
+        
+        /// <summary>
+        /// Set animation speed for NPCController
+        /// </summary>
+        /// <param name="speed">Animation speed multiplier</param>
+        public void SetAnimationSpeed(float speed)
+        {
+            if (hasAnimator)
+            {
+                animator.speed = speed;
+            }
         }
         
         /// <summary>
