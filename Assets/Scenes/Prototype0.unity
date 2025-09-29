@@ -280,7 +280,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1500000003}
-  - component: {fileID: 1500000004}
   m_Layer: 0
   m_Name: Desert Ground
   m_TagString: Untagged
