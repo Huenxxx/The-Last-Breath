@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0, type: 3}
+  m_Name: SilentHands
+  factionName: Silent Hands
+  description: Ruthless raiders who prey on travelers and settlements. They trust no one outside their clan and attack outsiders on sight.
+  defaultAlignment: 2
+  initialPlayerReputation: -50
+  preferredResources:
+  - Weapons
+  - Ammunition
+  - Food
+  - Medicine
+  - Valuables
+  defaultBehaviorToStrangers: 2
+  specialTraits:
+  - Masters of ambush tactics
+  - Extremely territorial
+  - No mercy for outsiders
+  - Live by raiding and pillaging
+  - Excellent at hit-and-run attacks
+  controlledPOIs:
+  - Raider Stronghold
+  - Ambush Point Delta
+  - Hidden Cache Site
+  - Bandit Crossroads
+  patrolRoutes:
+  - Ambush Highway
+  - Raider Territory
+  - Hunting Grounds
+  combatStyle: 0
+  preferredWeapons:
+  - SMG
+  - Sawed-off Shotgun
+  - Machete
+  - Molotov Cocktail
+  combatMorale: 70
+  fleeThreshold: 35
+  relationships:
+  - targetFaction: {fileID: 0}
+    relationshipType: 2
+    relationshipStrength: -60
+    description: Prey on nomads
+  - targetFaction: {fileID: 0}
+    relationshipType: 2
+    relationshipStrength: -80
+    description: Enemies of order and civilization
+  - targetFaction: {fileID: 0}
+    relationshipType: 2
+    relationshipStrength: -70
+    description: Attack settlements for resources

@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0, type: 3}
+  m_Name: TheAshborn
+  factionName: The Ashborn
+  description: Nomadic survivors who value survival above all else. They roam the wasteland in small groups, trading knowledge and resources.
+  defaultAlignment: 1
+  initialPlayerReputation: 0
+  preferredResources:
+  - Food
+  - Water
+  - Medicine
+  - Survival Gear
+  defaultBehaviorToStrangers: 1
+  specialTraits:
+  - Excellent at finding resources in harsh environments
+  - Distrustful of large settlements
+  - Value practical knowledge over material wealth
+  - Quick to flee rather than fight
+  controlledPOIs:
+  - Nomad Camp Alpha
+  - Desert Oasis
+  - Scavenger Outpost
+  patrolRoutes:
+  - Desert Highway
+  - Wasteland Circuit
+  - Resource Trail
+  combatStyle: 1
+  preferredWeapons:
+  - Crossbow
+  - Hunting Rifle
+  - Survival Knife
+  combatMorale: 60
+  fleeThreshold: 40
+  relationships:
+  - targetFaction: {fileID: 0}
+    relationshipType: 2
+    relationshipStrength: -30
+    description: Compete for resources
+  - targetFaction: {fileID: 0}
+    relationshipType: 0
+    relationshipStrength: 10
+    description: Occasional trade partners
+  - targetFaction: {fileID: 0}
+    relationshipType: 2
+    relationshipStrength: -60
+    description: Raiders are natural enemies

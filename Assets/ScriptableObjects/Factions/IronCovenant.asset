@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0, type: 3}
+  m_Name: IronCovenant
+  factionName: Iron Covenant
+  description: Militaristic warlords who control the old industrial zones. They value technology, metal, and order above all else.
+  defaultAlignment: 1
+  initialPlayerReputation: -10
+  preferredResources:
+  - Metal Scrap
+  - Electronics
+  - Weapons
+  - Ammunition
+  - Fuel
+  defaultBehaviorToStrangers: 2
+  specialTraits:
+  - Advanced weaponry and armor
+  - Strict military hierarchy
+  - Control key industrial facilities
+  - Demand tribute from weaker groups
+  - Excellent at fortification and defense
+  controlledPOIs:
+  - Iron Fortress
+  - Steel Mill Complex
+  - Weapons Factory
+  - Military Checkpoint Alpha
+  - Armory Depot
+  patrolRoutes:
+  - Industrial Corridor
+  - Military Highway
+  - Supply Line Route
+  combatStyle: 2
+  preferredWeapons:
+  - Assault Rifle
+  - Combat Shotgun
+  - Grenades
+  - Heavy Machine Gun
+  combatMorale: 85
+  fleeThreshold: 25
+  relationships:
+  - targetFaction: {fileID: 0}
+    relationshipType: 2
+    relationshipStrength: -40
+    description: Compete for territory and resources
+  - targetFaction: {fileID: 0}
+    relationshipType: 2
+    relationshipStrength: -80
+    description: Raiders threaten their order
+  - targetFaction: {fileID: 0}
+    relationshipType: 1
+    relationshipStrength: 20
+    description: Trade partners when beneficial

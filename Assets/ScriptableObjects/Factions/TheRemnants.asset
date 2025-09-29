@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0, type: 3}
+  m_Name: TheRemnants
+  factionName: The Remnants
+  description: Peaceful settlers trying to rebuild civilization. They are neutral but will defend their communities fiercely when threatened.
+  defaultAlignment: 1
+  initialPlayerReputation: 5
+  preferredResources:
+  - Building Materials
+  - Seeds
+  - Tools
+  - Medicine
+  - Books
+  defaultBehaviorToStrangers: 1
+  specialTraits:
+  - Skilled at farming and construction
+  - Strong community bonds
+  - Defensive but not aggressive
+  - Value knowledge and education
+  - Excellent at resource management
+  controlledPOIs:
+  - Haven Settlement
+  - Farming Commune
+  - Trading Post
+  - School House
+  - Medical Clinic
+  patrolRoutes:
+  - Settlement Perimeter
+  - Trade Route
+  - Farm Circuit
+  combatStyle: 1
+  preferredWeapons:
+  - Hunting Rifle
+  - Pistol
+  - Farming Tools
+  - Improvised Weapons
+  combatMorale: 65
+  fleeThreshold: 45
+  relationships:
+  - targetFaction: {fileID: 0}
+    relationshipType: 1
+    relationshipStrength: 10
+    description: Trade partners and allies
+  - targetFaction: {fileID: 0}
+    relationshipType: 0
+    relationshipStrength: -5
+    description: Wary of militaristic groups
+  - targetFaction: {fileID: 0}
+    relationshipType: 2
+    relationshipStrength: -70
+    description: Raiders are their greatest threat
