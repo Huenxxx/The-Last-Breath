@@ -280,10 +280,10 @@ namespace TheLastBreath.AI
         /// <summary>
         /// Set personal behavior override
         /// </summary>
-        public void SetPersonalBehavior(FactionBehavior behavior, bool override = true)
+        public void SetPersonalBehavior(FactionBehavior behavior, bool overrideBehavior = true)
         {
             personalBehaviorTowardsPlayer = behavior;
-            overrideFactionBehavior = override;
+            overrideFactionBehavior = overrideBehavior;
         }
         
         /// <summary>

@@ -7,6 +7,24 @@ using CharacterController = TheLastBreath.Characters.CharacterController;
 namespace TheLastBreath.AI
 {
     /// <summary>
+    /// Enum for different types of NPC jobs
+    /// </summary>
+    public enum NPCJob
+    {
+        None,
+        Guard,
+        Farmer,
+        Crafter,
+        Patrol,
+        Scavenger,
+        Cook,
+        Build,
+        Farm,
+        Craft,
+        Scavenge
+    }
+
+    /// <summary>
     /// Controls NPC behavior including needs-based AI, utility decisions, and basic behaviors
     /// </summary>
     [RequireComponent(typeof(NPCNeeds))]
@@ -65,16 +83,6 @@ namespace TheLastBreath.AI
             Resting,
             Seeking,
             Working
-        }
-        
-        public enum NPCJob
-        {
-            None,
-            Guard,
-            Farmer,
-            Crafter,
-            Patrol,
-            Scavenger
         }
         
         // Properties
@@ -825,28 +833,22 @@ namespace TheLastBreath.AI
         /// <summary>
         /// Handle critical need events
         /// </summary>
-        void HandleCriticalNeed(NPCNeeds.NeedType needType, float value)
+        void HandleCriticalNeed(NeedType needType)
         {
-            Debug.Log($"{npcName} has critical {needType}: {value}");
+            Debug.Log($"{npcName} has critical {needType}");
             
             // Force immediate action for critical needs
             switch (needType)
             {
-                case NPCNeeds.NeedType.Health:
-                    if (value <= 20f)
-                    {
-                        // Emergency behavior
-                        if (currentAction != null) StopCoroutine(currentAction);
-                        currentAction = StartCoroutine(SeekShelter());
-                    }
+                case NeedType.Health:
+                    // Emergency behavior
+                    if (currentAction != null) StopCoroutine(currentAction);
+                    currentAction = StartCoroutine(SeekShelter());
                     break;
                     
-                case NPCNeeds.NeedType.Fear:
-                    if (value >= 80f)
-                    {
-                        if (currentAction != null) StopCoroutine(currentAction);
-                        currentAction = StartCoroutine(Flee());
-                    }
+                case NeedType.Fear:
+                    if (currentAction != null) StopCoroutine(currentAction);
+                    currentAction = StartCoroutine(Flee());
                     break;
             }
         }
@@ -854,7 +856,7 @@ namespace TheLastBreath.AI
         /// <summary>
         /// Handle need change events
         /// </summary>
-        void HandleNeedChanged(NPCNeeds.NeedType needType, float oldValue, float newValue)
+        void HandleNeedChanged(NeedType needType, float newValue)
         {
             // Optional: React to need changes
         }

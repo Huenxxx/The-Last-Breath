@@ -3,6 +3,19 @@ using UnityEngine;
 namespace TheLastBreath.AI
 {
     /// <summary>
+    /// Enum for different types of needs
+    /// </summary>
+    public enum NeedType
+    {
+        Hunger,
+        Fatigue,
+        Morale,
+        Fear,
+        Health,
+        Infection
+    }
+
+    /// <summary>
     /// Sistema de necesidades para NPCs que controla valores como hambre, fatiga, moral, etc.
     /// Los valores decaen con el tiempo y afectan el comportamiento del NPC.
     /// </summary>
@@ -51,6 +64,10 @@ namespace TheLastBreath.AI
         public System.Action OnCriticalFear;
         public System.Action OnCriticalHealth;
         public System.Action OnCriticalInfection;
+
+        // Generic events for external systems
+        public System.Action<NeedType> OnNeedCritical;
+        public System.Action<NeedType, float> OnNeedChanged;
 
         private void Update()
         {
@@ -114,22 +131,66 @@ namespace TheLastBreath.AI
         private void CheckCriticalStates()
         {
             if (hunger <= criticalHungerThreshold)
+            {
                 OnCriticalHunger?.Invoke();
+                OnNeedCritical?.Invoke(NeedType.Hunger);
+            }
 
             if (fatigue <= criticalFatigueThreshold)
+            {
                 OnCriticalFatigue?.Invoke();
+                OnNeedCritical?.Invoke(NeedType.Fatigue);
+            }
 
             if (morale <= criticalMoraleThreshold)
+            {
                 OnCriticalMorale?.Invoke();
+                OnNeedCritical?.Invoke(NeedType.Morale);
+            }
 
             if (fear >= criticalFearThreshold)
+            {
                 OnCriticalFear?.Invoke();
+                OnNeedCritical?.Invoke(NeedType.Fear);
+            }
 
             if (health <= criticalHealthThreshold)
+            {
                 OnCriticalHealth?.Invoke();
+                OnNeedCritical?.Invoke(NeedType.Health);
+            }
 
             if (infection >= criticalInfectionThreshold)
+            {
                 OnCriticalInfection?.Invoke();
+                OnNeedCritical?.Invoke(NeedType.Infection);
+            }
+        }
+
+        // Generic method to modify needs by type
+        public void ModifyNeed(NeedType needType, float amount)
+        {
+            switch (needType)
+            {
+                case NeedType.Hunger:
+                    ModifyHunger(amount);
+                    break;
+                case NeedType.Fatigue:
+                    ModifyFatigue(amount);
+                    break;
+                case NeedType.Morale:
+                    ModifyMorale(amount);
+                    break;
+                case NeedType.Fear:
+                    ModifyFear(amount);
+                    break;
+                case NeedType.Health:
+                    ModifyHealth(amount);
+                    break;
+                case NeedType.Infection:
+                    ModifyInfection(amount);
+                    break;
+            }
         }
 
         // Public methods to modify needs
@@ -137,36 +198,42 @@ namespace TheLastBreath.AI
         {
             hunger = Mathf.Clamp(hunger + amount, 0f, 100f);
             OnHungerChanged?.Invoke(hunger);
+            OnNeedChanged?.Invoke(NeedType.Hunger, hunger);
         }
 
         public void ModifyFatigue(float amount)
         {
             fatigue = Mathf.Clamp(fatigue + amount, 0f, 100f);
             OnFatigueChanged?.Invoke(fatigue);
+            OnNeedChanged?.Invoke(NeedType.Fatigue, fatigue);
         }
 
         public void ModifyMorale(float amount)
         {
             morale = Mathf.Clamp(morale + amount, 0f, 100f);
             OnMoraleChanged?.Invoke(morale);
+            OnNeedChanged?.Invoke(NeedType.Morale, morale);
         }
 
         public void ModifyFear(float amount)
         {
             fear = Mathf.Clamp(fear + amount, 0f, 100f);
             OnFearChanged?.Invoke(fear);
+            OnNeedChanged?.Invoke(NeedType.Fear, fear);
         }
 
         public void ModifyHealth(float amount)
         {
             health = Mathf.Clamp(health + amount, 0f, 100f);
             OnHealthChanged?.Invoke(health);
+            OnNeedChanged?.Invoke(NeedType.Health, health);
         }
 
         public void ModifyInfection(float amount)
         {
             infection = Mathf.Clamp(infection + amount, 0f, 100f);
             OnInfectionChanged?.Invoke(infection);
+            OnNeedChanged?.Invoke(NeedType.Infection, infection);
         }
 
         // Getters for critical states
@@ -214,6 +281,39 @@ namespace TheLastBreath.AI
             GUILayout.Label($"Infection: {infection:F1}");
             GUILayout.Label($"Urgent Need: {GetMostUrgentNeed()}");
             GUILayout.EndArea();
+        }
+
+        // Public properties for accessing need values
+        public float Hunger => hunger;
+        public float Fatigue => fatigue;
+        public float Morale => morale;
+        public float Fear => fear;
+        public float Health => health;
+        public float Infection => infection;
+        
+        // Critical threshold property
+        public float CriticalThreshold => criticalHungerThreshold;
+        
+        // Method to get need value by type
+        public float GetNeed(NeedType needType)
+        {
+            switch (needType)
+            {
+                case NeedType.Hunger:
+                    return hunger;
+                case NeedType.Fatigue:
+                    return fatigue;
+                case NeedType.Morale:
+                    return morale;
+                case NeedType.Fear:
+                    return fear;
+                case NeedType.Health:
+                    return health;
+                case NeedType.Infection:
+                    return infection;
+                default:
+                    return 0f;
+            }
         }
     }
 }

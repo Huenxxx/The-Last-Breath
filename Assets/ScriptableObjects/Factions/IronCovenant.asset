@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0, type: 3}
+  m_Script: {fileID: 11500000, guid: 641679060305c364a8abede6013828e7, type: 3}
   m_Name: IronCovenant
   factionName: Iron Covenant
   description: Militaristic warlords who control the old industrial zones. They value technology, metal, and order above all else.

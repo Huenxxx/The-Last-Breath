@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0, type: 3}
+  m_Script: {fileID: 11500000, guid: 641679060305c364a8abede6013828e7, type: 3}
   m_Name: SilentHands
   factionName: Silent Hands
   description: Ruthless raiders who prey on travelers and settlements. They trust no one outside their clan and attack outsiders on sight.

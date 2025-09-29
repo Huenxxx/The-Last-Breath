@@ -188,8 +188,8 @@ namespace TheLastBreath.AI
             }
             
             // Simulate farming work
-            npcNeeds.ModifyNeed(NPCNeeds.NeedType.Fatigue, -2f);
-            npcNeeds.ModifyNeed(NPCNeeds.NeedType.Morale, 1f);
+            npcNeeds.ModifyNeed(NeedType.Fatigue, -2f);
+                npcNeeds.ModifyNeed(NeedType.Morale, 1f);
             
             yield return new WaitForSeconds(2f);
         }
@@ -202,7 +202,7 @@ namespace TheLastBreath.AI
             if (threats.Length > 0)
             {
                 // Alert behavior
-                npcNeeds.ModifyNeed(NPCNeeds.NeedType.Fear, 5f);
+                npcNeeds.ModifyNeed(NeedType.Fear, 5f);
                 Debug.Log($"{npcController.npcName} detected threat while guarding!");
             }
             else
@@ -223,8 +223,8 @@ namespace TheLastBreath.AI
             yield return StartCoroutine(MoveToWorkArea());
             
             // Simulate crafting
-            npcNeeds.ModifyNeed(NPCNeeds.NeedType.Fatigue, -1f);
-            npcNeeds.ModifyNeed(NPCNeeds.NeedType.Morale, 2f);
+            npcNeeds.ModifyNeed(NeedType.Fatigue, -1f);
+            npcNeeds.ModifyNeed(NeedType.Morale, 2f);
             
             yield return new WaitForSeconds(4f);
         }
@@ -240,7 +240,7 @@ namespace TheLastBreath.AI
             // Wait to reach destination
             yield return new WaitForSeconds(5f);
             
-            npcNeeds.ModifyNeed(NPCNeeds.NeedType.Fatigue, -1f);
+            npcNeeds.ModifyNeed(NeedType.Fatigue, -1f);
         }
         
         IEnumerator ScavengeBehavior()
@@ -256,7 +256,7 @@ namespace TheLastBreath.AI
                 yield return new WaitForSeconds(3f);
                 
                 // Simulate scavenging
-                npcNeeds.ModifyNeed(NPCNeeds.NeedType.Morale, 3f);
+                npcNeeds.ModifyNeed(NeedType.Morale, 3f);
             }
             else
             {
@@ -266,7 +266,7 @@ namespace TheLastBreath.AI
                 npcController.MoveTo(wanderPoint);
             }
             
-            npcNeeds.ModifyNeed(NPCNeeds.NeedType.Fatigue, -2f);
+            npcNeeds.ModifyNeed(NeedType.Fatigue, -2f);
             yield return new WaitForSeconds(2f);
         }
         
@@ -275,9 +275,9 @@ namespace TheLastBreath.AI
             yield return StartCoroutine(MoveToWorkArea());
             
             // Simulate cooking
-            npcNeeds.ModifyNeed(NPCNeeds.NeedType.Hunger, 5f); // Taste testing
-            npcNeeds.ModifyNeed(NPCNeeds.NeedType.Morale, 2f);
-            npcNeeds.ModifyNeed(NPCNeeds.NeedType.Fatigue, -1f);
+            npcNeeds.ModifyNeed(NeedType.Hunger, 5f); // Taste testing
+            npcNeeds.ModifyNeed(NeedType.Morale, 2f);
+            npcNeeds.ModifyNeed(NeedType.Fatigue, -1f);
             
             yield return new WaitForSeconds(3f);
         }
@@ -287,8 +287,8 @@ namespace TheLastBreath.AI
             yield return StartCoroutine(MoveToWorkArea());
             
             // Simulate building work
-            npcNeeds.ModifyNeed(NPCNeeds.NeedType.Fatigue, -3f);
-            npcNeeds.ModifyNeed(NPCNeeds.NeedType.Morale, 1f);
+            npcNeeds.ModifyNeed(NeedType.Fatigue, -3f);
+            npcNeeds.ModifyNeed(NeedType.Morale, 1f);
             
             yield return new WaitForSeconds(5f);
         }
@@ -320,10 +320,10 @@ namespace TheLastBreath.AI
             if (npcNeeds == null) return false;
             
             // Critical needs override job
-            if (npcNeeds.GetNeed(NPCNeeds.NeedType.Health) < 30f) return true;
-            if (npcNeeds.GetNeed(NPCNeeds.NeedType.Hunger) < 20f) return true;
-            if (npcNeeds.GetNeed(NPCNeeds.NeedType.Fatigue) < 15f) return true;
-            if (npcNeeds.GetNeed(NPCNeeds.NeedType.Fear) > 80f) return true;
+            if (npcNeeds.GetNeed(NeedType.Health) < 30f) return true;
+            if (npcNeeds.GetNeed(NeedType.Hunger) < 20f) return true;
+            if (npcNeeds.GetNeed(NeedType.Fatigue) < 15f) return true;
+            if (npcNeeds.GetNeed(NeedType.Fear) > 80f) return true;
             
             return false;
         }
@@ -360,8 +360,8 @@ namespace TheLastBreath.AI
             while (currentBreakTime < breakDuration)
             {
                 // Rest during break
-                npcNeeds.ModifyNeed(NPCNeeds.NeedType.Fatigue, 5f * Time.deltaTime);
-                npcNeeds.ModifyNeed(NPCNeeds.NeedType.Morale, 2f * Time.deltaTime);
+                npcNeeds.ModifyNeed(NeedType.Fatigue, 5f * Time.deltaTime);
+                npcNeeds.ModifyNeed(NeedType.Morale, 2f * Time.deltaTime);
                 
                 currentBreakTime += Time.deltaTime;
                 yield return null;

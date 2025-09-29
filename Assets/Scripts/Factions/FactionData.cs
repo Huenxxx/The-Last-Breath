@@ -37,6 +37,7 @@ namespace TheLastBreath.Factions
         
         [Header("Combat & Relations")]
         public CombatStance defaultCombatStance = CombatStance.Defensive;
+        public float combatMorale = 50f;
         public List<FactionRelationship> relationships = new List<FactionRelationship>();
         
         [Header("Special Traits")]
@@ -147,6 +148,7 @@ namespace TheLastBreath.Factions
     
     public enum FactionBehavior
     {
+        Neutral,
         Friendly,
         Welcoming,
         Cautious,
@@ -229,3 +231,4 @@ namespace TheLastBreath.Factions
     
     #endregion
 }
+ }

@@ -116,6 +116,32 @@ namespace TheLastBreath.AI
         public AIAction GetCurrentAction() => currentAction;
         public string GetLastDecisionReason() => lastDecisionReason;
 
+        /// <summary>
+        /// Get the best action for the given NPC controller
+        /// </summary>
+        public AIAction GetBestAction(NPCController npcController)
+        {
+            if (npcNeeds == null) return null;
+
+            float bestUtility = 0f;
+            AIAction bestAction = null;
+
+            foreach (var action in availableActions)
+            {
+                if (!action.CanExecute()) continue;
+
+                float utility = action.CalculateUtility();
+
+                if (utility > bestUtility && utility >= minUtilityThreshold)
+                {
+                    bestUtility = utility;
+                    bestAction = action;
+                }
+            }
+
+            return bestAction;
+        }
+
         private void OnGUI()
         {
             if (!showDebugInfo) return;
