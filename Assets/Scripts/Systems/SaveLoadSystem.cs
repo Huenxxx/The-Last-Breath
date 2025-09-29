@@ -212,7 +212,8 @@ namespace TheLastBreath.Systems
             if (terrainGenerator != null)
             {
                 currentSaveData.terrainSeed = terrainGenerator.Seed;
-                currentSaveData.terrainSize = terrainGenerator.TerrainSize;
+                Vector2 terrainSizeVector = terrainGenerator.TerrainSize;
+                currentSaveData.terrainSize = Mathf.RoundToInt(terrainSizeVector.x); // Using x component as terrain size
             }
             
             // Save character data
@@ -290,7 +291,7 @@ namespace TheLastBreath.Systems
             if (terrainGenerator != null)
             {
                 terrainGenerator.SetSeed(currentSaveData.terrainSeed);
-                terrainGenerator.SetTerrainSize(currentSaveData.terrainSize);
+                terrainGenerator.SetTerrainSize(new Vector2(currentSaveData.terrainSize, currentSaveData.terrainSize));
                 terrainGenerator.RegenerateTerrain();
             }
             
